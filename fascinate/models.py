@@ -5,7 +5,6 @@ from datetime import date, datetime
 
 class Img(models.Model):
     """ 图片信息 """
-
     width = models.IntegerField(max_length=5, default=0)
     height = models.IntegerField(max_length=5, default=0)
     name = models.CharField(max_length=100, default='')
