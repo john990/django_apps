@@ -8,4 +8,5 @@ urlpatterns = patterns('fascinate.views',
     # url(r'^$', 'django_apps.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^(?P<img_id>\d+)/$', 'post'),
+    url(r'^ajax/(?P<img_id>\d+)/$', 'ajax_post'),
 )
