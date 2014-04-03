@@ -12,6 +12,9 @@ class Img(models.Model):
     intro = models.TextField(default='')
     create_at = models.DateTimeField(auto_now_add=True)
     create_ip = models.CharField(max_length=20, default='')
+    up_count = models.IntegerField(max_length=10, default=0)
+    down_count = models.IntegerField(max_length=10, default=0)
+    status = models.IntegerField(max_length=2, default=0)
 
     def __unicode__(self):
         return '%s' % self.path
