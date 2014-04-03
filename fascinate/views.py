@@ -4,12 +4,13 @@ from django.http.response import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 
 from base import JsonResponse
-from base.Utils import get_object_or_empty
+from base.Utils import get_object_or_empty, is_none
 
 from fascinate.models import Img, Vote
 
 
 num_per_page = 20
+none_data = '["error":"No data"]'
 
 
 def index(request):
@@ -30,8 +31,7 @@ def api_get_post(request, img_id):
      get img by id
     """
     p = get_object_or_empty(Img, pk=img_id)
-    if p is None:
-        p = '["aa":"aa"]'
+    p = is_none(p, none_data)
     return JsonResponse.response(p)
 
 
@@ -40,6 +40,7 @@ def api_get_post_vote(request, img_id):
     get vote by img id
     """
     votes = Vote.objects.filter(img_id=img_id)
+    votes = is_none(votes, none_data)
     return JsonResponse.response(votes)
 
 
@@ -49,6 +50,7 @@ def api_recent(request, page_num):
     """
     if page_num or page_num < 0:
         page_num = 1
-    imgs = Img.objects.order_by('-create_at').all()[(page_num - 1) * num_per_page:num_per_page]
-    return JsonResponse.response(imgs)
+    images = Img.objects.order_by('-create_at').all()[(page_num - 1) * num_per_page:num_per_page]
+    images = is_none(images, none_data)
+    return JsonResponse.response(images)
 
