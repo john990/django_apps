@@ -13,6 +13,6 @@ urlpatterns = patterns('fascinate.views',
     # API
     url(r'^api/(?P<img_id>\d+)/$', 'api_get_post'),
     url(r'^api/vote/(?P<img_id>\d+)/$', 'api_get_post_vote'),
-    url(r'^api/recent/$', 'api_recent'),
+    url(r'^api/recent/(\d+)/$', 'api_recent'),
     url(r'^api/popular/$', 'api_popular'),
 )

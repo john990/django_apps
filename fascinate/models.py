@@ -10,7 +10,7 @@ class Img(models.Model):
     name = models.CharField(max_length=100, default='')
     path = models.CharField(max_length=300, default='')
     intro = models.TextField(default='')
-    crate_at = models.DateTimeField(auto_now_add=True)
+    create_at = models.DateTimeField(auto_now_add=True)
     create_ip = models.CharField(max_length=20, default='')
 
     def __unicode__(self):
