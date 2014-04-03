@@ -2,4 +2,4 @@ django_apps
 ===========
 
 
-你懂的。
+已经转移到bitbucket
